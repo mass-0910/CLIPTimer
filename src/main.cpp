@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <windows.h>
-#include <psapi.h>
-#include <shlwapi.h>
-#include <tchar.h>
 #include <dirent.h>
 #include <bits/stdc++.h>
 #include <DxLib/DxLib.h>
