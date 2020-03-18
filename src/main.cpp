@@ -33,16 +33,16 @@ int font_UI;
 int initialize_DxLib(){
 
     SetOutApplicationLogValidFlag(FALSE);
-	ChangeWindowMode(TRUE);
-	SetGraphMode(256, 256, 32);
-	SetWindowText("CLIP Timer");
-	if(DxLib_Init() == -1){
+    ChangeWindowMode(TRUE);
+    SetGraphMode(256, 256, 32);
+    SetWindowText("CLIP Timer");
+    if(DxLib_Init() == -1){
         return -1;
     }
-	SetWindowSizeChangeEnableFlag(FALSE, FALSE);
+    SetWindowSizeChangeEnableFlag(FALSE, FALSE);
     SetWindowSize(256, 128);
-	SetWindowIconID(1);
-	SetMouseDispFlag(TRUE);
+    SetWindowIconID(1);
+    SetMouseDispFlag(TRUE);
     SetAlwaysRunFlag(TRUE);
     SetBackgroundColor(255, 255, 255);
 
@@ -74,7 +74,6 @@ int WINAPI WinMain(
 
     font_UI = CreateFontToHandle((const TCHAR *)"Yu Gothic UI", 16, 1, DX_FONTTYPE_NORMAL);
 
-    //char passbuf[FILENAME_MAX] = "\"C:/Users/shake/MyTools/BFI.exe\"";
     char passbuf[FILENAME_MAX] = "\"C:/Program Files/CELSYS/CLIP STUDIO 1.5/CLIP STUDIO/CLIPStudio.exe\"";
     char tmp_passbuf[FILENAME_MAX];
     char clipstudioDir[FILENAME_MAX] = "C:/Users/shake/Documents/C/cli_stu_timer";
@@ -335,9 +334,9 @@ char *openClipFile(char *folderpath, char init){
     }
 
     if((dir = opendir(folderpath)) == NULL){
-		fprintf(stderr, "%s cannot open.\n", folderpath);
-		return NULL;
-	}
+        fprintf(stderr, "%s cannot open.\n", folderpath);
+        return NULL;
+    }
 
     for(dp = readdir(dir); dp != NULL; dp = readdir(dir)){
         if(strcmp(dp->d_name, ".") == 0 || strcmp(dp->d_name, "..") == 0)continue;
@@ -368,7 +367,7 @@ char *openClipFile(char *folderpath, char init){
 
 void nameCheck(CLIPSTUDIO_TIME *ct, char *folderpath){
     DIR *dir;
-	struct dirent *dp;
+    struct dirent *dp;
     std::stack<DIR *> dir_stack;
     std::vector<std::string> name_vector;
     char folderPathBuffer[FILENAME_MAX];
@@ -437,14 +436,14 @@ void nameCheck(CLIPSTUDIO_TIME *ct, char *folderpath){
 }
 
 char *get_extension(char *filename){
-	int i;
-	char *next_dot;
-	for(i = 1; filename[i] != '\0'; i++){
-		if(filename[i] == '.'){
-			if((next_dot = get_extension(filename + i)) != NULL)return next_dot;
-			else return filename + i;
-		}
-	}
-	return NULL;
+    int i;
+    char *next_dot;
+    for(i = 1; filename[i] != '\0'; i++){
+        if(filename[i] == '.'){
+            if((next_dot = get_extension(filename + i)) != NULL)return next_dot;
+            else return filename + i;
+        }
+    }
+    return NULL;
 }
 
