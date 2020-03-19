@@ -27,7 +27,6 @@ void nameCheck(CLIPSTUDIO_TIME *ct, char *folderpath);
 char *get_extension(char *filename);
 
 time_t programStartTime = time(NULL);
-
 int font_UI;
 
 int initialize_DxLib(){
@@ -35,7 +34,8 @@ int initialize_DxLib(){
     SetOutApplicationLogValidFlag(FALSE);
     ChangeWindowMode(TRUE);
     SetGraphMode(256, 256, 32);
-    SetWindowText("CLIP Timer");
+    SetMainWindowText((const TCHAR *)"CLIP Timer");
+    SetNotSoundFlag(TRUE);
     if(DxLib_Init() == -1){
         return -1;
     }
