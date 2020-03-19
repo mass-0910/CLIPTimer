@@ -74,9 +74,9 @@ int WINAPI WinMain(
 
     font_UI = CreateFontToHandle((const TCHAR *)"Yu Gothic UI", 16, 1, DX_FONTTYPE_NORMAL);
 
-    char passbuf[FILENAME_MAX] = "\"C:/Program Files/CELSYS/CLIP STUDIO 1.5/CLIP STUDIO/CLIPStudio.exe\"";
+    char passbuf[FILENAME_MAX] = "\"C:/Program Files/CELSYS/CLIP STUDIO 1.5/CLIP STUDIO PAINT/CLIPStudioPaint.exe\"";
     char tmp_passbuf[FILENAME_MAX];
-    char clipstudioDir[FILENAME_MAX] = "C:/Users/shake/Documents/C/cli_stu_timer";
+    char clipstudioDir[FILENAME_MAX] = "C:/Users/shake/Documents/";
 
     FILE *setfp = fopen("setting.txt", "r");
     if(setfp != NULL){
