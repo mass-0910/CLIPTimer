@@ -4,7 +4,7 @@ CLIP STUDIO PAINTでお絵かきのタイムを計測するためのソフトウ
 
 ## # 使い方
 
-1. releaseからCLIPTimer.zipをダウンロードして解凍  
+1. releasesからCLIPTimer.zipをダウンロードして解凍  
 2. setting.txtの1行目にCLIPStudioPaint.exeへのフルパスを記述  
 3. setting.txtの2行目に.clipファイルを格納しているフォルダへのフルパスを記述  
 4. CLIPTimer.exeを実行すると,タイマーウインドウとCLIP STUDIO PAINTが開きます  
