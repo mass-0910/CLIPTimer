@@ -22,6 +22,7 @@ struct SETTING{
 
 void save_time(CLIPSTUDIO_TIME *ct, char *name, int time);
 int get_starttime(CLIPSTUDIO_TIME *ct, char *name);
+void reset_starttime(CLIPSTUDIO_TIME *ct, char *name);
 char *openClipFile(char *filepath, char init);
 void nameCheck(CLIPSTUDIO_TIME *ct, char *folderpath);
 char *get_extension(char *filename);
@@ -128,6 +129,9 @@ int WINAPI WinMain(
     char setting = 0;
     frontcheck.setStatus(settingFlags.frontWindow);
     activecheck.setStatus(settingFlags.activeFlag);
+
+    Button resetButton;
+    resetButton.init(10, 100, 70, 20, "リセット");
     
     PROCESS_INFORMATION pi;
     STARTUPINFO si;
@@ -207,6 +211,19 @@ int WINAPI WinMain(
                     printf("%s\n", clipstudioDir);
                     nameCheck(ct, clipstudioDir);
                 }
+            }
+        }
+
+        resetButton.draw();
+        if(resetButton.isClicked() && clipfilename != NULL){
+            char strbuf[64];
+            snprintf(strbuf, 64, "%sのタイマーをリセットします。よろしいですか？", clipfilename);
+            if(MessageBox(GetMainWindowHandle(), TEXT(strbuf), TEXT("確認 : タイマーのリセット"), MB_OKCANCEL | MB_ICONWARNING) == IDOK){
+                start = time(NULL);
+                reset_starttime(ct, clipfilename);
+                tmptime = 0;
+                lossTime = 0;
+                beforeLossStart = time(NULL);
             }
         }
 
@@ -317,6 +334,14 @@ int get_starttime(CLIPSTUDIO_TIME *ct, char *name){
         }
     }
     return 0;
+}
+
+void reset_starttime(CLIPSTUDIO_TIME *ct, char *name){
+    for(int i = 0; i < RECORD_MAX; i++){
+        if(strcmp(name, ct[i].fileName) == 0){
+            ct[i].sectime = 0;
+        }
+    }
 }
 
 char *openClipFile(char *folderpath, char init){
